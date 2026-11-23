@@ -1,7 +1,7 @@
 ---
 title: "Analyse de la biodiversité aquatique par ADN environnemental"
 subtitle: "Projet Genome Québec – poissons et invertébrés"
-author: "Claudia"
+author: " Claudia TCHOBO, Jospine ABADASSI, Myrix MASSAMBA, Aïda SIGUE, Mireille MEGNIDIO"
 date: "`r Sys.Date()`"
 lang: fr
 output:
@@ -12,29 +12,71 @@ output:
     df_print: paged
 ---
 
-# Introduction générale
+**Programme de formation en Science des Données au Féminin en Afrique Francophone**
+
+**RAPPORT DE FIN DE FORMATION**
+
+**Diplôme : Certification en Science des données**
+
+**Groupe n° : 4**
+
+**Comité d'organisation :**
+Pr. Thierry WARIN, Dr. Bernice BANCOLE, Dr Josette-René LANDRY
+
+**Période de formation : Mars 2023 - Novembre 2026**
+
+
+
+# Introduction 
+
+Les données soumises à notre réflexion proviennent d'une initiative de **science citoyenne de Génome Québec,
+nommée Mission ADN-eau**. Des élèves d'écoles secondaires et de collèges du sud du Québec ont récolté des
+échantillons d'eau dans des cours d'eau proches de leur établissement. L'**ADN environnemental (ADNe)** contenu
+dans ces échantillons a ensuite été séquencé afin d'identifier les espèces présentes et d'approfondir nos
+connaissances sur la biodiversité. La Mission ADN-eau s'inscrit dans une démarche plus large de Génome Québec. 
+
+L'ADNe est, selon la formule de Génome Québec, *« une empreinte génétique laissée par les organismes vivants dans
+leur environnement »* : mucus, cellules de peau, excréments, gamètes. Un simple litre d'eau filtré permet ainsi de
+détecter des poissons ou des invertébrés sans les capturer, ce qui rend la méthode **peu invasive, peu coûteuse
+sur le terrain et accessible au grand public**. 
 
 L’ADN environnemental (ADNe) permet de détecter, à partir de traces génétiques présentes dans l’environnement, des organismes ayant fréquenté un milieu. Cette approche constitue un outil complémentaire aux méthodes classiques d’inventaire de la biodiversité aquatique. Son interprétation nécessite toutefois une attention particulière à la qualité des données, à la résolution des assignations taxonomiques et aux signaux pouvant provenir des contrôles négatifs.
 
 Le présent rapport porte sur des données d’ADNe ciblant les poissons et les invertébrés dans différents sites d’échantillonnage au Québec. Il vise à décrire les données obtenues, à examiner la diversité taxonomique détectée et à identifier les signaux qui nécessitent une vérification avant toute interprétation écologique définitive.
 
-## Objectif général
+# 1 Objectifs général et spécifiques
+## 1.1. Objectif général
 
-Analyser les données d’ADNe des poissons et des invertébrés afin d’évaluer leur qualité, de caractériser les détections taxonomiques et d’examiner les signaux atypiques observés dans les échantillons et les contrôles.
+Ce projet a pour but d'analyser les données d’ADNe des poissons et des invertébrés afin d’évaluer leur qualité, de caractériser les détections taxonomiques et d’examiner les signaux atypiques observés dans les échantillons et les contrôles.
 
-## Objectifs spécifiques
+## 1.2. Objectifs spécifiques
+Plus spécifiquement, il s'agit :
+  *i*- **OS1 : ** assurer la qualité et la fiabilité des données d’ADNe utilisées pour caractériser la biodiversité des poissons et des invertébrés.
+  *ii*. **OS2 :** caractériser la diversité taxonomique des poissons et des invertébrés et décrire sa répartition dans les sites d’échantillonnage.
+  *iii*. **OS3 :** évaluer les signaux potentiels de contamination et les détections taxonomiques atypiques afin d’identifier les OTU nécessitant des vérifications complémentaires.
 
-1. **OS1 – Qualité des données :** assurer la qualité et la fiabilité des données d’ADNe utilisées pour caractériser la biodiversité des poissons et des invertébrés.
-2. **OS2 – Diversité taxonomique :** caractériser la diversité taxonomique des poissons et des invertébrés et décrire sa répartition dans les sites d’échantillonnage.
-3. **OS3 – Contrôles et détections atypiques :** évaluer les signaux potentiels de contamination et les détections taxonomiques atypiques afin d’identifier les OTU nécessitant des vérifications complémentaires.
+# 2. Matériel et méthodes
+## 2.1. Milieu d'étude
+L'étude s'est effectuée au Québec. 
 
-# Matériel et méthodes
+## 2.2 Collecte des données
 
-## Données et organisation de l’analyse
+**Description des données**
+
+Les données reçues concernent quatre fichiers portant sur **des espèces de Poissons (Fish)** et **des espèces d'Invertébrés (Invertebrates)** à raison de deux fichiers par type d'être vivant. L'un des fichiers a fait référence à la localisation des sites d’échantillonnage d’eau récoltée et un autre concerne les OTU ou taxonomie identifiée. 
+
+**OTU** désigne une *unité taxonomique opérationnelle*.
+Lors de l'analyse d'amplicons métagénomiques, il est courant de réunir les amplicons présentant une homologie de séquence supérieure à 99% sous un même groupe afin de palier aux erreurs de séquençage. Dès lors ce groupe correspond à un organisme et la séquence la plus fréquemment trouvée dans le groupe est celle qui ne comporte pas d'erreur de séquençage. **Ce groupe d'amplicon et leur séquence représentative constituent un OTU**.
+Par la suite, des analyses ont été effectuées pour identifier ou décrire chacun des OTUs. Dans certains cas, il est possible d'avoir une identification au niveau d'une espèce ou d'une souche précise. Dans d'autre cas, la séquence n'est pas suffisamment unique pour permettre une identification précise. La dernière colonne des tables partagées contient une identification putative des OTUs.
+Notons que terme "amplicon" est utilisé pour décrire la séquence de la région de l'ADN ribosomal qui est ciblée par l'amplification PCR. Ce sont ces régions qui ont été séquencées et c'est à partir de leur séquence que nous avons inféré l'identité des espèces trouvées.
+Pour revenir aux différents fichiers qui se ressemblent et donc contiennent les mêmes colonnes, prenons en exemple le fichier Poissons.tsv, chaque ligne représente un OTU et chaque colonne représente un site d'échantillonnage.
+Afin de générer ce fichier, un séquençage d'amplicons a été effectué pour chacun des sites. Les amplicons détectés sur l'ensemble des sites ont ensuite été combinés en OTUs.
+Le tableau rapporte le nombre d'amplicons trouvés pour chacun des OTUs à chacun des sites.
+Compte-tenu de la diversité des sites, il est possible qu'une espèce observée dans un site soit complètement absente dans les autres.
+
+**Organisation de l’analyse**
 
 L’analyse repose sur quatre fichiers : les matrices d’OTU des poissons et des invertébrés ainsi que les fichiers de métadonnées (mapping) associés. Les matrices contiennent les identifiants des OTU, les comptages de lectures par échantillon et les annotations taxonomiques. Les mappings fournissent notamment les informations sur les échantillons, leur type et leur localisation.
-
-Les traitements sont réalisés dans R. Les analyses distinguent les échantillons biologiques, les blancs de terrain et les blancs d’extraction. Les coordonnées GPS sont utilisées lorsqu’elles sont disponibles pour représenter les sites.
 
 ## Précautions d’interprétation
 
@@ -43,6 +85,73 @@ Les traitements sont réalisés dans R. Les analyses distinguent les échantillo
 - Les poissons et les invertébrés étant étudiés avec des marqueurs/essais distincts, leurs nombres absolus de lectures et leurs indices de diversité ne doivent pas être comparés comme s’ils étaient directement équivalents.
 - Lorsque les sites ne comportent qu’un seul échantillon, les comparaisons spatiales restent descriptives.
 - La présence d’une OTU dans un blanc constitue un signal à examiner, mais ne prouve pas à elle seule une contamination. De même, l’absence dans les blancs ne confirme pas automatiquement l’exactitude de son annotation taxonomique.
+
+## 2.3 Traitement et analyse des données
+Les traitements sont réalisés dans R. Les analyses distinguent les échantillons biologiques, les blancs de terrain et les blancs d’extraction. Les coordonnées GPS sont utilisées lorsqu’elles sont disponibles pour représenter les sites. Comme expliqué plus haut, nous avons deux espèces et quatre fichiers : un fichier de localisation et un fichier qui renseigne les OTUs. 
+Les descriptions des échantillons sont disponibles dans les fichiers "mapping" de l'expérience. 
+Ils contiennent les IDs des échantillons, le nom de l'école, des cours d'eau et du site d'échantillonnage. Il est également indiqué s'il s'agit d'échantillons biologiques ou de blancs de terrain. Le blanc d'extraction s'appelle "Blanc.Extraction".
+
+Le fichier contenant les espèces se présente comme suit :
+●	La colonne "#FEATURE_ID" contient un ID arbitraire pour chacun des OTUs générés. Chaque OTU a sa propre ligne dans la table.
+●	La colonne "taxonomy" contient l'assignation taxonomique des OTUS. Les informations sont indiquées de façon hiérarchique :
+·       k__ : kingdom
+·       p__ : phylum
+·       c__ : class
+·       o__ : order
+·       f__ : family
+·       g__ : genus
+·       s__ : species
+●	Les autres colonnes portent les ID des échantillons comme dans les fichiers mapping
+par exemple : MI.M05812_0023.001.FLD0193.1-1-G-a_MiFish
+ 
+MI = Run Miseq
+M05812 = ID du séquenceur
+0023 = numéro de la run
+001 = lane du séquenceur
+FLD0193 = index de multiplexage de l'échantillon
+1-1-G-a_MiFish = nom de l'échantillon
+
+Sur la base de ces fichiers, il a été constaté que pour une espèce, les fichiers ont une donnée commune : l’ID des échantillons. 
+
+Cependant, dans l’un des fichiers, ces ID se présentent sous forme de colonne et dans l’autre sous forme de ligne. 
+
+**a)	Transformer l’un des fichiers du format large à un format long**
+Etant donné que les ID d’échantillonage sont dans les deux fichiers, il devenait nécessaire de joindre ces fichiers et pour ce faire, il fallait transformer l’un des fichiers. Le fichier dans lequel les ID sont sur des colonnes a été transformé en utilisant la fonction pivot_longer.
+En R, `pivot_longer` est une fonction du package `tidyr` utilisée pour transformer des données d'un format large à un format long. Ce type d'opération est courant lorsqu'on travaille avec des ensembles de données où les variables sont stockées en tant que colonnes et que l'on souhaite transformer ces colonnes en lignes.
+
+La fonction `pivot_longer` prend plusieurs arguments, y compris le nom des données à transformer, les noms des colonnes à transformer en lignes, et éventuellement, les noms des nouvelles colonnes à créer pour stocker les valeurs des variables et les étiquettes pour ces nouvelles variables.
+
+**b)	Joindre les deux fichiers**
+La fonction `full_join()` est une fonction du package `dplyr` en R, qui permet de joindre deux dataframes en utilisant une opération de jointure (join). Une jointure (join) combine les lignes de deux dataframes en fonction d'une ou plusieurs colonnes communes. Dans le contexte présent, il s’agit d’une colonne, l’ID des échantillons. Ce dataframe a été enregistré dans un fichier. Nous nous retrouvons donc avec un fichier pour chaque espèce.
+
+**c) Nettoyage des données**
+Après l’étape de jointure, la colonne représentant les OTUs ou taxonomy a été analysé et il a été remarqué que certains OTUs ne portaient pas tous les éléments : k__, p__, c__, o__, f__, g__ et s__ (il est déjà question de Fish et Invertebrates dans notre étude). Soit pour ces colonnes, il y a eu une erreur de saisie soit pour ces colonnes les différents éléments constituant une espèce n’ont pas été identifiés. Quoi qu’il en soit ces lignes ont été placés dans un autre fichier et supprimer des fichiers sur lesquels le travail a été fait.
+
+**d) Création des colonnes k, p, c, o, f et g** 
+Ces colonnes ont été crées pour identifier sur chaque OTU les éléments qui le constituent. 
+
+De toutes ces analyses, nous obtenons le dictionnaire des variables suivant : 
+
+Variables	Définition	Type
+FEATURE_ID	ID arbitraire pour chacun des OTUs générés	Numérique
+taxonomy	Assignation taxonomique des OTUs sous forme de k__Eukaryota;p__Ochrophyta;c__Xanthophyceae;o__Mischococcales;f__Pleurochloridaceae;g__Monodus;	Chaîne de caractère
+SampleID	ID echantillon sous la forme de MI.M05812_0023.001.FLD0193.1-1-G-a_MiFish	Chaîne de caractère
+value	Nombre d’amplicons appartenant à un OTU	Numérique
+alias	Nom de l’échantillon : pour MI.M05812_0023.001.FLD0193.1-1-G-a_MiFish, l’alias est 1-1-G-a	Chaîne de caractère
+siteEchantillon	Site d’échantillon	Chaîne de caractère
+Longitude	Longitude du site	Numérique
+Latitude	Latitude du site	Numérique
+TypeEchantillon	Type de l’échantillon	Chaîne de caractère
+color	Des couleurs ont été attribuées à chaque type d’échantillon 
+1 : Biologique ; 2 : Blanc ; 3 : Blanc d’extraction	Numérique
+Treatment	Site de traitement de l’ADN ribosomal	Chaîne de caractère
+k	kingdom	Chaîne de caractère
+p	phylum	Chaîne de caractère
+c	class	Chaîne de caractère
+o	order	Chaîne de caractère
+f	family	Chaîne de caractère
+g	genus	Chaîne de caractère
+
 
 ## Préparation et importation des données
 
@@ -218,6 +327,7 @@ for (nom in names(donnees)) {
 }
 ```
 
+*Correspondance entre les mappings et les matrices OTU*
 
 ```{r}
 
@@ -289,6 +399,7 @@ correspondance_poissons <- verifier_correspondance(
 
 ```
 
+*Aperçu des données*
 
 ```{r}
 ## 8. Aperçu des données
@@ -307,6 +418,7 @@ print(head(data_invertebres, 5))
 ```
 
 
+*Identification des types d'échantillons*
 ```{r}
 
 ## 8. Identification des types d'échantillons
@@ -348,19 +460,17 @@ print(
 
 Il y a une information particulièrement importante : la majorité des échantillons absents des matrices OTU sont des blancs, mais un échantillon biologique de poissons est également absent. Il faudra traiter ces deux situations différemment.
 
-##1. Interprétation des résultats
+*Interprétation des résultats*
 
-###A. Échantillons d'invertébrés
+**A. Échantillons d'invertébrés**
 Les deux échantillons absents de data_invertebres sont des blancs :
 Identifiant	Site	Type
 FLD0135.B12	Parc de l'Île-Bélair	Blanc
 FLD0145.B22	Rue Saint-Gilles	Blanc
 
-Cela signifie que les deux échantillons absents ne sont pas des prélèvements biologiques destinés à caractériser les communautés d'invertébrés.
+Cela signifie que les deux échantillons absents ne sont pas des prélèvements biologiques destinés à caractériser les communautés d'invertébrés. Leur absence de la matrice OTU ne remet donc pas directement en cause les analyses de diversité des échantillons biologiques.
 
-Leur absence de la matrice OTU ne remet donc pas directement en cause les analyses de diversité des échantillons biologiques.
-
-###B. Échantillons de poissons
+**B. Échantillons de poissons**
 Les 14 échantillons absents se répartissent en deux catégories :
 Échantillons biologiques
 1
@@ -369,11 +479,10 @@ FLD0219.13-2-F-a_MiFish — Parc Paul-Leveille
 
 Échantillons blancs
 13
-FLD0224 à FLD0246, selon les identifiants listés dans tes résultats.
+FLD0224 à FLD0246, selon les identifiants listés dans nos résultats.
 
 
 C'est le point qui mérite le plus d'attention.
-
 L'échantillon FLD0219.13-2-F-a_MiFish est un prélèvement biologique. Il figure dans le mapping, mais pas dans la matrice OTU des poissons.
 
 Plusieurs explications sont possibles :
@@ -382,7 +491,8 @@ Plusieurs explications sont possibles :
 - il a été oublié lors de l'export de la matrice ;
 - il existe sous un autre identifiant dans les données sources.
 Nous ne pouvons pas encore déterminer laquelle de ces explications est correcte.
-2. Ce que nous pouvons retenir pour l'analyse
+
+*Ce que nous pouvons retenir pour l'analyse*
 Groupe	Absents de la matrice	Biologiques absents	Blancs absents
 Invertébrés	2	0	2
 Poissons	14	1	13
@@ -393,6 +503,7 @@ Les blancs ont un rôle important dans une étude d'ADN environnemental : ils pe
 Pour les analyses de diversité des communautés, nous travaillerons principalement avec les échantillons biologiques disposant de données OTU. Les blancs pourront être conservés dans un jeu de données distinct pour les contrôles de qualité.
 
 
+###Bilan des échantillons biologiques et des blancs
 
 ```{r}
 
@@ -451,22 +562,25 @@ bilan_poissons <- bilan_echantillons(
 ```
 
 Ces résultats permettent maintenant de dresser un bilan précis de la composition des échantillons et de leur présence dans les matrices OTU. Ils confirment que les deux jeux de données présentent une situation différente, notamment pour les échantillons biologiques et les blancs.
-##1. Interprétation des résultats
-###A. Invertébrés
+
+*Interprétation des résultats*
+
+**A. Invertébrés**
 Type d'échantillon	Présent dans la matrice OTU	Absent de la matrice OTU
 Biologique	27	0
 Blanc	25	2
 Blanc d'extraction	1	0
 Total	53	2
 
-###Interprétation :
+*Interprétation :*
 - Les 27 échantillons biologiques du mapping sont tous présents dans la matrice OTU. C'est un résultat cohérent pour la suite de l'analyse.
 - Sur les 27 blancs, 25 sont présents et 2 sont absents.
 - Le blanc d'extraction est également présent dans la matrice.
-- Les deux échantillons absents sont MI.M05812_0023.001.FLD0135.B12 et MI.M05812_0023.001.FLD0145.B22. Il s'agit de blancs, et non d'échantillons biologiques.
-Conclusion : la matrice OTU des invertébrés contient l'ensemble des échantillons biologiques répertoriés dans le mapping. Les deux échantillons manquants ne compromettent donc pas directement l'analyse des échantillons biologiques, mais leur absence doit être signalée dans le rapport.
+- Les deux échantillons absents sont **MI.M05812_0023.001.FLD0135.B12 et MI.M05812_0023.001.FLD0145.B22**. Il s'agit de blancs, et non d'échantillons biologiques.
 
-###B. Poissons
+**Conclusion :** la matrice OTU des invertébrés contient l'ensemble des échantillons biologiques répertoriés dans le mapping. Les deux échantillons manquants ne compromettent donc pas directement l'analyse des échantillons biologiques, mais leur absence doit être signalée dans le rapport.
+
+**B. Poissons**
 Type d'échantillon	Présent dans la matrice OTU	Absent de la matrice OTU
 Biologique	26	1
 Blanc	14	13
@@ -481,7 +595,7 @@ Total	41	14
 Conclusion : contrairement aux invertébrés, la matrice OTU des poissons ne contient pas tous les échantillons biologiques du mapping. L'absence de l'échantillon FLD0219.13-2-F-a_MiFish doit être vérifiée auprès des données de séquençage ou du traitement bioinformatique. Il ne faut pas le supprimer silencieusement du bilan.
 
 
-
+###Vérification du nombre total de lectures par échantillon
 ```{r}
 
 ## 10. Vérification du nombre total de lectures par échantillon
@@ -532,15 +646,10 @@ abondance_poissons <- verifier_abondance_echantillons(
 
 ```{r}
 getOption("na.print")
-```
-```{r}
 options(na.print = "NA")
 ```
 
-```{r}
-options()
-```
-
+###Abondance des échantillons biologiques uniquement
 
 ```{r}
 
@@ -599,8 +708,9 @@ abondance_biologique_poissons <-
 ```
 
 Ces résultats sont très utiles : ils permettent maintenant de distinguer les abondances des échantillons biologiques de celles des blancs. On peut donc mieux évaluer la qualité des données qui serviront aux analyses écologiques.
-##1. Interprétation des abondances biologiques
-###A. Invertébrés
+
+*Interprétation des abondances biologiques*
+**A. Invertébrés**
 27 échantillons biologiques disponibles
 Indicateur	Résultat
 Nombre d'échantillons	27
@@ -610,13 +720,13 @@ Abondance médiane	142 560
 Abondance moyenne	140 085
 Échantillons avec moins de 1 000 lectures	0
 
-**Interprétation** :
+*Interprétation* :
 
 Les 27 échantillons biologiques d'invertébrés présentent des abondances relativement importantes. Le plus faible total est de 36 474 lectures et aucun échantillon ne se situe sous le seuil indicatif de 1 000 lectures.
 
 Cela indique que les échantillons biologiques disposent d'une profondeur de séquençage relativement satisfaisante pour poursuivre les analyses. Il reste néanmoins nécessaire de vérifier si la profondeur est suffisante pour caractériser la diversité de chaque échantillon.
 
-###B. Poissons
+**B. Poissons**
 26 échantillons biologiques disponibles
 Indicateur	Résultat
 Nombre d'échantillons	26
@@ -626,18 +736,17 @@ Abondance médiane	126 865
 Abondance moyenne	116 162
 Échantillons avec moins de 1 000 lectures	1
 
-**Interprétation** :
+*Interprétation* :
 
 Les 26 échantillons biologiques de poissons présentent des abondances très variables. La majorité possède plusieurs dizaines de milliers de lectures, mais un échantillon se distingue fortement :
 - Identifiant : MI.M05812_0023.001.FLD0202.5-3-D-c_MiFish
 - Site : Heron Bleu
 - Abondance : 16 lectures
-Cet échantillon présente une profondeur de séquençage extrêmement faible par rapport aux autres. Sa richesse spécifique observée risque donc d'être fortement sous-estimée.
-
-Il faut également rappeler qu'un autre échantillon biologique, FLD0219.13-2-F-a_MiFish, est absent de la matrice OTU. Il faudra vérifier son absence dans les données sources.
+Cet échantillon présente une profondeur de séquençage extrêmement faible par rapport aux autres. Sa richesse spécifique observée risque donc d'être fortement sous-estimée. Il faut également rappeler qu'un autre échantillon biologique, FLD0219.13-2-F-a_MiFish, est absent de la matrice OTU. Il faudra vérifier son absence dans les données sources.
 
 
-2. Comparaison entre les deux groupes
+*Comparaison entre les deux groupes*
+
 Indicateur	Invertébrés	Poissons
 Échantillons biologiques	27	26
 Moyenne des lectures	140 085	116 162
@@ -658,12 +767,60 @@ Les profondeurs de séquençage sont globalement élevées chez les invertébré
 
 # OS2 – Caractérisation de la diversité taxonomique et répartition spatiale
 
+### Visualisation des abondances biologiques par site
+
 ```{r, fig.width=14, fig.height=12, dpi=300}
 
 ## 12. Visualisation des abondances biologiques par site
+# ============================================================
+# 1. Création du tableau combiné des abondances biologiques
+# ============================================================
+
+abondances_combinees <- dplyr::bind_rows(
+
+  abondance_biologique_invertebres %>%
+    dplyr::mutate(Groupe = "Invertébrés"),
+
+  abondance_biologique_poissons %>%
+    dplyr::mutate(Groupe = "Poissons")
+
+)
+
+# ============================================================
+# 2. Vérification des données
+# ============================================================
+
+colonnes_requises <- c(
+  "SampleID",
+  "Total_lectures",
+  "SiteEchantillonnage",
+  "Groupe"
+)
+
+stopifnot(
+  all(colonnes_requises %in% names(abondances_combinees))
+)
+
+# Vérification du nombre d'échantillons par groupe
+print(
+  dplyr::count(abondances_combinees, Groupe)
+)
+
+# Conserver les échantillons avec des lectures positives
+# pour permettre la représentation logarithmique.
+
+abondances_combinees_graphique <- abondances_combinees %>%
+  dplyr::filter(
+    !is.na(Total_lectures),
+    Total_lectures > 0
+  )
+
+# ============================================================
+# 3. Graphique des abondances biologiques par site
+# ============================================================
 
 ggplot2::ggplot(
-  abondances_combinees,
+  abondances_combinees_graphique,
   ggplot2::aes(
     x = reorder(SampleID, Total_lectures),
     y = Total_lectures,
@@ -671,50 +828,76 @@ ggplot2::ggplot(
   )
 ) +
   ggplot2::geom_col(width = 0.8) +
-  ggplot2::facet_wrap(~ Groupe, scales = "free_x") +
+
+  ggplot2::facet_wrap(
+    ~ Groupe,
+    scales = "free_x"
+  ) +
+
   ggplot2::scale_y_log10() +
+
   ggplot2::coord_flip() +
+
   ggplot2::labs(
     title = "Abondance des lectures par site d'échantillonnage",
-    subtitle = "Comparaison entre les invertébrés et les poissons",
+    subtitle = "Profondeur de séquençage des échantillons biologiques de poissons et d'invertébrés",
     x = "Échantillon",
     y = "Nombre total de lectures (échelle logarithmique)",
     fill = "Site d'échantillonnage"
   ) +
-  ggplot2::scale_fill_viridis_d(option = "turbo") +
-  ggplot2::guides(
-    fill = ggplot2::guide_legend(
-      ncol = 3,
-      title.position = "top",
-      title.hjust = 0.5,
-      key.size = grid::unit(0.35, "cm"),
-      override.aes = list(size = 3)
-    )
+
+  ggplot2::scale_fill_viridis_d(
+    option = "turbo"
   ) +
+
+  ggplot2::guides(
+  fill = ggplot2::guide_legend(
+    ncol = 3,
+    title.position = "top",
+    title.hjust = 0.5,
+    override.aes = list(size = 3)
+  )
+) +
+
   ggplot2::theme_minimal(base_size = 12) +
+
   ggplot2::theme(
     axis.text.y = ggplot2::element_text(size = 8),
     axis.text.x = ggplot2::element_text(size = 9),
+
     plot.title = ggplot2::element_text(
       face = "bold",
       size = 15
     ),
-    plot.subtitle = ggplot2::element_text(size = 11),
+
+    plot.subtitle = ggplot2::element_text(
+      size = 11
+    ),
+
     legend.position = "bottom",
-    legend.text = ggplot2::element_text(size = 8),
+
+    legend.text = ggplot2::element_text(
+      size = 8
+    ),
+
     legend.title = ggplot2::element_text(
       face = "bold",
       size = 9
     ),
-    legend.box = "vertical",
-    panel.spacing = grid::unit(1, "cm"),
-    plot.margin = ggplot2::margin(15, 20, 15, 15)
-  )
 
+    legend.box = "vertical",
+
+    panel.spacing = grid::unit(1, "cm"),
+
+    plot.margin = ggplot2::margin(
+      15, 20, 15, 15
+    )
+  )
 ```
 
 
-#Interprétation du graphique : abondance des lectures par site d’échantillonnage
+*Interprétation du graphique : abondance des lectures par site d’échantillonnage*
+
 Ce graphique présente la répartition du nombre total de lectures obtenues pour chaque échantillon, en distinguant les deux groupes étudiés : les invertébrés et les poissons. Il permet d'apprécier la quantité de lectures générées par échantillon et d'observer les variations entre les échantillons provenant des différents sites d'échantillonnage.
 
 ####1. Abondance des lectures chez les invertébrés
@@ -1017,6 +1200,7 @@ unique(mapping_invertebres_carte$TypeEchantillon)
 ```
 
 ```{r}
+
 # BLOC 19 : CARTE DES ÉCHANTILLONS DE POISSONS
 
 # Définition des couleurs
@@ -1043,8 +1227,52 @@ mapping_poissons_carte <- mapping_poissons %>%
     )
   )
 
+# ============================================================
+# AJOUT : Vérification et filtrage des coordonnées GPS
+# ============================================================
+
+# Conversion des coordonnées en valeurs numériques
+mapping_poissons_carte <- mapping_poissons_carte %>%
+  dplyr::mutate(
+    `Longitude(X)` = suppressWarnings(
+      as.numeric(as.character(`Longitude(X)`))
+    ),
+    `Latitude(Y)` = suppressWarnings(
+      as.numeric(as.character(`Latitude(Y)`))
+    )
+  )
+
+# Identification des échantillons sans coordonnées valides
+coordonnees_manquantes_poissons <- mapping_poissons_carte %>%
+  dplyr::filter(
+    !is.finite(`Longitude(X)`) |
+    !is.finite(`Latitude(Y)`) |
+    abs(`Longitude(X)`) > 180 |
+    abs(`Latitude(Y)`) > 90
+  )
+
+# Affichage du nombre d'échantillons concernés
+cat(
+  "Nombre d'échantillons avec coordonnées GPS invalides :",
+  nrow(coordonnees_manquantes_poissons),
+  "\n"
+)
+
+# Filtrage uniquement pour la représentation cartographique
+mapping_poissons_carte <- mapping_poissons_carte %>%
+  dplyr::filter(
+    is.finite(`Longitude(X)`),
+    is.finite(`Latitude(Y)`),
+    dplyr::between(`Longitude(X)`, -180, 180),
+    dplyr::between(`Latitude(Y)`, -90, 90)
+  )
+
+# ============================================================
+# FIN DE L'AJOUT
+# ============================================================
+
 # Création de la carte
-  fishMap <- leaflet() %>%
+fishMap <- leaflet() %>%
   setView(
     lng = -73.70813912039158,
     lat = 45.60938582346861,
@@ -1068,8 +1296,8 @@ mapping_poissons_carte <- mapping_poissons %>%
     lng = ~`Longitude(X)`,
     lat = ~`Latitude(Y)`,
     radius = 6,
-    color = ~palette_poissons(TypeEchantillon),
-    fillColor = ~palette_poissons(TypeEchantillon),
+    color = ~pal_poissons(TypeEchantillon),
+    fillColor = ~pal_poissons(TypeEchantillon),
     fillOpacity = 0.8,
     popup = ~paste(
       "Site :", SiteEchantillonnage,
@@ -1085,34 +1313,35 @@ mapping_poissons_carte <- mapping_poissons %>%
     ),
     options = layersControlOptions(collapsed = FALSE)
   ) %>%
-  # Position de la légende sur la carte,  # Couleurs de la légende, # Libellés correspondant aux couleurs, # Titre de la légende
+  # Position de la légende sur la carte,
+  # Couleurs de la légende,
+  # Libellés correspondant aux couleurs,
+  # Titre de la légende
   addLegend(
     position = "bottomright",
-    pal = palette_poissons,
-    values = types_poissons,
+    pal = pal_poissons,
+    values = names(couleurs_poissons),
     title = "Types d'échantillons - Poissons",
     opacity = 1
   ) %>%
-  addScaleBar(position = "bottomleft") %>% #positionnement de l'échelle en bas à gauche
+  addScaleBar(position = "bottomleft") %>% # positionnement de l'échelle en bas à gauche
   addMiniMap(toggleDisplay = FALSE) %>%
   addMouseCoordinates() %>% # Ajout des coordonnées GPS du pointeur de la souris
   addResetMapButton() %>% # ajout du bouton "reset" pour recentrage carte
-  addFullscreenControl() %>%#ajout du basculement en mode plein écran
-  addSearchOSM() #ajout de la barre de recherche Openstreetmap
- 
+  addFullscreenControl() %>% # ajout du basculement en mode plein écran
+  addSearchOSM() # ajout de la barre de recherche OpenStreetMap
 
 # Affichage de la carte
 fishMap
+
 
 ```
 
 
 
 ```{r}
-
-# ============================================================
 # BLOC 20 : CARTE DES ÉCHANTILLONS D'INVERTÉBRÉS
-# ============================================================
+
 
 # Définition des couleurs
 couleurs_invertebres <- c(
@@ -1137,6 +1366,63 @@ mapping_invertebres_carte <- mapping_invertebres %>%
       "<br><b>Traitement :</b> ", Treatment
     )
   )
+
+# ============================================================
+# AJOUT : Vérification et filtrage des coordonnées GPS
+# ============================================================
+
+# Conversion des coordonnées en valeurs numériques
+mapping_invertebres_carte <- mapping_invertebres_carte %>%
+  dplyr::mutate(
+    `Longitude(X)` = suppressWarnings(
+      as.numeric(as.character(`Longitude(X)`))
+    ),
+    `Latitude(Y)` = suppressWarnings(
+      as.numeric(as.character(`Latitude(Y)`))
+    )
+  )
+
+# Identification des échantillons sans coordonnées valides
+coordonnees_manquantes_invertebres <- mapping_invertebres_carte %>%
+  dplyr::filter(
+    !is.finite(`Longitude(X)`) |
+    !is.finite(`Latitude(Y)`) |
+    abs(`Longitude(X)`) > 180 |
+    abs(`Latitude(Y)`) > 90
+  )
+
+# Affichage du nombre d'échantillons concernés
+cat(
+  "Nombre d'échantillons avec coordonnées GPS invalides :",
+  nrow(coordonnees_manquantes_invertebres),
+  "\n"
+)
+
+# Affichage des échantillons concernés
+if (nrow(coordonnees_manquantes_invertebres) > 0) {
+  print(
+    coordonnees_manquantes_invertebres %>%
+      dplyr::select(
+        SampleID,
+        SiteEchantillonnage,
+        `Longitude(X)`,
+        `Latitude(Y)`
+      )
+  )
+}
+
+# Filtrage uniquement pour la représentation cartographique
+mapping_invertebres_carte <- mapping_invertebres_carte %>%
+  dplyr::filter(
+    is.finite(`Longitude(X)`),
+    is.finite(`Latitude(Y)`),
+    dplyr::between(`Longitude(X)`, -180, 180),
+    dplyr::between(`Latitude(Y)`, -90, 90)
+  )
+
+# ============================================================
+# FIN DE L'AJOUT
+# ============================================================
 
 # Création de la carte
 invertMap <- leaflet() %>%
@@ -1163,8 +1449,8 @@ invertMap <- leaflet() %>%
     lng = ~`Longitude(X)`,
     lat = ~`Latitude(Y)`,
     radius = 6,
-    color = ~palette_invertebres(TypeEchantillon),
-    fillColor = ~palette_invertebres(TypeEchantillon),
+    color = ~pal_invertebres(TypeEchantillon),
+    fillColor = ~pal_invertebres(TypeEchantillon),
     fillOpacity = 0.8,
     popup = ~paste(
       "Site :", SiteEchantillonnage,
@@ -1182,8 +1468,8 @@ invertMap <- leaflet() %>%
   ) %>%
   addLegend(
     position = "bottomright",
-    pal = palette_invertebres,
-    values = types_invertebres,
+    pal = pal_invertebres,
+    values = names(couleurs_invertebres),
     title = "Types d'échantillons - Invertébrés",
     opacity = 1
   ) %>%
@@ -1474,32 +1760,6 @@ carteSuperposee
 ```
 
 
-```{r}
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ```{r, fig.width=14, fig.height=12, dpi=300}
 ## 22. Graphique de la richesse spécifique par échantillon
@@ -1533,6 +1793,21 @@ ggplot2::ggplot(
 ```
 
 
+*Interprétation de la richesse en OTU par échantillon*
+
+La figure présente la distribution de la richesse en unités taxonomiques opérationnelles (OTU) détectées dans les échantillons biologiques d'invertébrés et de poissons, selon les sites d'échantillonnage.
+
+Chez les invertébrés, la richesse observée varie de 330 à 681 OTU par échantillon, avec une richesse moyenne d'environ 528 OTU. La majorité des échantillons présente une richesse relativement élevée, bien qu'une variabilité soit observée entre les sites. Cette hétérogénéité pourrait refléter des différences dans la composition des communautés détectées, mais également des variations liées aux processus d'échantillonnage et d'analyse moléculaire.
+
+Chez les poissons, la richesse varie de 1 à 24 OTU par échantillon, avec une moyenne d'environ 12 OTU. Plusieurs échantillons présentent une richesse intermédiaire, tandis que certains se distinguent par des valeurs plus élevées ou particulièrement faibles. L'échantillon présentant une seule OTU nécessite une attention particulière lors de l'interprétation, notamment en raison de la possibilité d'une profondeur de séquençage insuffisante.
+
+Les différences de richesse numérique entre les invertébrés et les poissons ne doivent pas être interprétées comme une comparaison directe de leur biodiversité respective, puisque les marqueurs moléculaires utilisés diffèrent entre les deux groupes. De plus, une OTU ne correspond pas nécessairement à une espèce biologique distincte.
+
+Dans le cadre de l'objectif spécifique 2 (OS2), ces résultats mettent en évidence une variabilité de la richesse moléculaire détectée entre les échantillons et les sites étudiés. Ils constituent une première caractérisation descriptive de la répartition de la diversité taxonomique, qui doit être complétée par l'analyse de la composition des communautés et des indices de diversité alpha et bêta.
+
+
+####Statistiques descriptives de la richesse par groupe
+
 ```{r}
 ## 23. Statistiques descriptives de la richesse par groupe
 
@@ -1550,12 +1825,15 @@ resume_richesse <- richesse_combinee %>%
 
 print(as.data.frame(resume_richesse), row.names = FALSE)
 ```
-####Première interprétation :
+
+*Première interprétation :*
 - Les invertébrés présentent une richesse en OTU nettement supérieure à celle des poissons dans les données analysées.
 - La richesse des invertébrés varie de 330 à 681 OTU par échantillon, tandis que celle des poissons varie de 1 à 24 OTU.
 - La dispersion des valeurs chez les invertébrés est plus importante en valeur absolue. Il faut toutefois tenir compte de l'échelle très différente des deux groupes.
 - Ces résultats décrivent les OTU détectées, et non directement le nombre d'espèces présentes dans le milieu. Une OTU ne correspond pas nécessairement à une espèce.
 
+
+###Profondeur de séquençage des échantillons biologiques
 
 ```{r}
 ## 24. Profondeur de séquençage des échantillons biologiques
@@ -1600,16 +1878,131 @@ cat("\nÉCHANTILLONS AYANT MOINS DE 1 000 LECTURES\n")
 print(as.data.frame(echantillons_faible_profondeur), row.names = FALSE)
 ```
 
-#Interprétation des résultats
+*Interprétation des résultats*
 Chez les invertébrés : les 27 échantillons présentent des profondeurs de séquençage relativement élevées, comprises entre 36 474 et 201 735 lectures. Aucun échantillon ne présente moins de 1 000 lectures.
 
 Chez les poissons : les profondeurs de séquençage sont également élevées pour la majorité des échantillons. Cependant, un échantillon, MI.M05812_0023.001.FLD0202.5-3-D-c_MiFish, ne possède que 16 lectures. Cette valeur est particulièrement faible par rapport aux autres échantillons.
 Conclusion : les données présentent globalement une profondeur de séquençage importante, mais l'échantillon de poissons ayant 16 lectures devra être traité avec prudence dans les analyses de richesse et de diversité. Il ne faut pas l'exclure automatiquement sans justification méthodologique.
 
 
+###Visualisation des courbes de raréfaction
+
 ```{r, fig.width=14, fig.height=10, dpi=300}
 ## 25. Visualisation des courbes de raréfaction
 library (vegan)
+
+
+## 25. Visualisation des courbes de raréfaction
+
+library(vegan)
+
+# Fonction de calcul des courbes de raréfaction
+calculer_rarefaction <- function(matrice, groupe) {
+
+  matrice <- as.matrix(matrice)
+  storage.mode(matrice) <- "numeric"
+
+  # Vérifier que les lectures sont valides
+  stopifnot(
+    all(is.finite(matrice)),
+    all(matrice >= 0),
+    all(matrice == floor(matrice))
+  )
+
+  resultats <- lapply(colnames(matrice), function(id) {
+
+    lectures <- matrice[, id]
+
+    # Conserver les OTU détectées
+    lectures <- lectures[lectures > 0]
+
+    total <- sum(lectures)
+
+    # Ignorer les échantillons sans lectures
+    if (total == 0) {
+      return(NULL)
+    }
+
+    # Définir 100 profondeurs au maximum
+    profondeurs <- unique(
+      as.integer(round(
+        seq(1, total, length.out = 100)
+      ))
+    )
+
+    profondeurs <- profondeurs[
+      profondeurs >= 1 & profondeurs <= total
+    ]
+
+    # Calcul de la richesse attendue
+    richesse <- vapply(
+      profondeurs,
+      function(p) {
+        as.numeric(
+          vegan::rarefy(
+            lectures,
+            sample = p
+          )
+        )
+      },
+      numeric(1)
+    )
+
+    data.frame(
+      SampleID = id,
+      Profondeur = profondeurs,
+      Richesse_attendue = richesse,
+      Groupe = groupe
+    )
+  })
+
+  dplyr::bind_rows(resultats)
+}
+
+# Sélection des échantillons biologiques
+ids_invertebres_bio <- intersect(
+  colnames(matrice_invertebres_num),
+  abondance_biologique_invertebres$SampleID
+)
+
+ids_poissons_bio <- intersect(
+  colnames(matrice_poissons_num),
+  abondance_biologique_poissons$SampleID
+)
+
+# Calcul des courbes pour les invertébrés
+rarefaction_invertebres <- calculer_rarefaction(
+  matrice_invertebres_num[
+    , ids_invertebres_bio, drop = FALSE
+  ],
+  "Invertébrés"
+)
+
+# Calcul des courbes pour les poissons
+rarefaction_poissons <- calculer_rarefaction(
+  matrice_poissons_num[
+    , ids_poissons_bio, drop = FALSE
+  ],
+  "Poissons"
+)
+
+# Combinaison des deux groupes
+rarefaction_combinee <- dplyr::bind_rows(
+  rarefaction_invertebres,
+  rarefaction_poissons
+)
+
+# Vérification des échantillons représentés
+print(
+  rarefaction_combinee %>%
+    dplyr::group_by(Groupe) %>%
+    dplyr::summarise(
+      Nombre_echantillons = dplyr::n_distinct(SampleID),
+      Nombre_points = dplyr::n(),
+      .groups = "drop"
+    )
+)
+# Graphique des courbes de raréfaction
 
 ggplot2::ggplot(
   rarefaction_combinee,
@@ -1659,18 +2052,20 @@ ggplot2::ggplot(
       override.aes = list(alpha = 1, linewidth = 1.2)
     )
   )
-```
-##Interprétation
-1. Résultats chez les invertébrés
-Dans le panneau de gauche, les échantillons d'invertébrés présentent une richesse en OTU relativement élevée. Les valeurs finales observées varient approximativement de 330 à 680 OTU attendues selon les échantillons.
 
+```
+
+##Interprétation
+**1. Résultats chez les invertébrés**
+Dans le panneau de gauche, les échantillons d'invertébrés présentent une richesse en OTU relativement élevée. Les valeurs finales observées varient approximativement de 330 à 680 OTU attendues selon les échantillons.
 On constate que :
 - La richesse en OTU augmente avec le nombre de lectures.
 - Les échantillons présentent des niveaux de richesse différents, ce qui traduit une hétérogénéité de la diversité observée entre les échantillons.
 - Plusieurs courbes commencent à s'infléchir et tendent vers un plateau aux profondeurs de séquençage les plus élevées.
 - Toutefois, certaines courbes continuent à augmenter, même aux profondeurs les plus importantes.
 Interprétation : la tendance à la stabilisation de plusieurs courbes suggère que le séquençage a permis de détecter une grande partie de la richesse en OTU présente dans certains échantillons. Cependant, l'absence de plateau complet pour plusieurs autres indique que des OTU supplémentaires pourraient encore être détectées avec une profondeur de séquençage plus importante.
-2. Résultats chez les poissons
+
+**2. Résultats chez les poissons**
 Dans le panneau de droite, la richesse en OTU est nettement plus faible que celle observée chez les invertébrés. Les valeurs finales se situent approximativement entre 5 et 24 OTU attendues selon les échantillons.
 
 On remarque que :
@@ -1679,7 +2074,8 @@ On remarque que :
 - Plusieurs courbes continuent de progresser jusqu'aux profondeurs de séquençage les plus élevées.
 - La majorité des courbes ne présentent pas de plateau clairement marqué.
 Interprétation : ces résultats suggèrent que la richesse en OTU des échantillons de poissons n'a pas nécessairement été entièrement caractérisée. L'augmentation continue des courbes indique que des lectures supplémentaires pourraient permettre de détecter de nouvelles OTU.
-3. Comparaison entre les invertébrés et les poissons
+
+**3. Comparaison entre les invertébrés et les poissons**
 La comparaison des deux panneaux met en évidence une différence importante de richesse en OTU entre les deux groupes :
 Critère	Invertébrés	Poissons
 Richesse finale approximative	330 à 680 OTU	5 à 24 OTU
@@ -1688,14 +2084,16 @@ Plateau	Partiellement atteint pour certains échantillons	Peu marqué
 Exhaustivité de l'échantillonnage	Semble meilleure pour certains échantillons	Semble moins satisfaisante
 
 Les invertébrés présentent donc une richesse en OTU observée nettement supérieure à celle des poissons dans les données analysées. Toutefois, il faut tenir compte des différences de groupes biologiques, de protocoles et éventuellement de marqueurs moléculaires avant d'attribuer cette différence à une diversité biologique intrinsèquement plus importante.
-4. Que nous apprennent ces courbes sur la qualité du séquençage ?
+
+**4. Que nous apprennent ces courbes sur la qualité du séquençage ?**
+
 L'un des principaux intérêts des courbes de raréfaction est d'évaluer si la profondeur de séquençage est suffisante pour caractériser la richesse en OTU des échantillons.
 - Une courbe qui atteint un plateau : cela signifie que l'augmentation du nombre de lectures apporte peu de nouvelles OTU. La profondeur de séquençage semble alors suffisante pour cet échantillon.
 - Une courbe qui continue de monter : cela signifie que de nouvelles OTU sont encore détectées lorsque le nombre de lectures augmente. Une profondeur de séquençage supplémentaire pourrait améliorer la caractérisation de la richesse.
 - Des courbes finales différentes : elles indiquent que les échantillons ne présentent pas tous la même richesse en OTU.
 
 
-Analyse des courbes de raréfaction
+####Analyse des courbes de raréfaction
 
 Les courbes de raréfaction mettent en évidence une augmentation de la richesse en OTU attendue en fonction de la profondeur de séquençage, aussi bien chez les invertébrés que chez les poissons. Toutefois, les deux groupes présentent des profils distincts.
 
