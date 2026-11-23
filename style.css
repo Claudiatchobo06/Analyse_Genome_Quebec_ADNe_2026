@@ -1,0 +1,86 @@
+
+/* Logo SDA en haut à droite */
+
+#header {
+  position: relative;
+  padding-right: 210px;
+  min-height: 130px;
+}
+
+#header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 190px;
+  height: 120px;
+  background-image: url("images/Logo_SDA_png.jpeg");
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+}
+
+
+
+
+
+
+/* ==================================================
+   MISE EN FORME DU TEXTE
+   ================================================== */
+
+/* Justification des paragraphes */
+p {
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Titres alignés à gauche */
+h1, h2, h3, h4 {
+  text-align: left;
+  margin-top: 25px;
+  margin-bottom: 12px;
+}
+
+/* Alignement des listes */
+li {
+  text-align: justify;
+  line-height: 1.5;
+}
+
+/* Tableaux */
+table {
+  width: 100%;
+}
+
+
+
+
+
+/* ==================================================
+   MISE EN PAGE POUR L'IMPRESSION
+   ================================================== */
+
+@media print {
+
+  @page {
+    size: A4;
+    margin: 2cm;
+  }
+
+  body {
+    font-size: 11pt;
+  }
+
+  /* Éviter les titres isolés en bas de page */
+  h1, h2, h3 {
+    break-after: avoid;
+  }
+
+  /* Éviter de couper les figures */
+  img, table {
+    break-inside: avoid;
+  }
+
+}
