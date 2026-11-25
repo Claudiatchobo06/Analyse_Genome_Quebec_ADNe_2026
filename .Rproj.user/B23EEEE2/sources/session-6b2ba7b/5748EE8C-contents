@@ -1,0 +1,32 @@
+
+% Packages nécessaires
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+
+% Pagination en bas de page
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{Page \thepage\ sur \pageref{LastPage}}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{Page \thepage\ sur \pageref{LastPage}}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% Logo SDA en haut à droite de la première page
+\AddToShipoutPictureFG*{
+  \AtPageUpperLeft{
+    \put(
+      \LenToUnit{\dimexpr\paperwidth-5cm\relax},
+      \LenToUnit{-3cm}
+    ){
+      \includegraphics[width=3.5cm]{images/Logo_SDA_png.jpeg}
+    }
+  }
+}

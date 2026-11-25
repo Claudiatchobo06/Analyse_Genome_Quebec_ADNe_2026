@@ -1,9 +1,10 @@
 ---
-title: "Analyse de la biodiversité aquatique par ADN environnemental"
-subtitle: "Projet Genome Québec – poissons et invertébrés"
-author: " Claudia TCHOBO, Jospine ABADASSI, Myrix MASSAMBA, Aïda SIGUE, Mireille MEGNIDIO"
+title: "Biologie et données : une nouvelle lecture de la biodiversité"
+subtitle: "Projet Génome Québec – ADN environnemental"
+author: " Claudia D. TCHOBO, Jospine D. ABADASSI, Myrix MASSAMBA, Aïda T. SIGUE, Mireille MEGNIDIO"
 date: "`r Sys.Date()`"
 lang: fr
+always_allow_html: true
 output:
   html_document:
     toc: true
@@ -11,6 +12,13 @@ output:
     number_sections: true
     df_print: paged
     css: "style.css"
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    latex_engine: xelatex
+    includes:
+      in_header: "pagination.tex"
 ---
 
 **Programme de formation en Science des Données au Féminin en Afrique Francophone**
@@ -26,7 +34,7 @@ Pr. Thierry WARIN, Dr. Bernice BANCOLE, Dr Josette-René LANDRY
 
 **Période de formation : Mars 2023 - Novembre 2026**
 
-
+**Thème du projet : Analyse de la biodiversité aquatique par ADN environnemental : caractérisation des poissons et des invertébrés au Québec**
 
 # Introduction 
 
